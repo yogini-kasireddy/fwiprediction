@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>FMI Prediction</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background: #f8f9fa;
+        }
+        .form-container {
+            max-width: 600px;
+            margin: 60px auto;
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        .form-group label {
+            font-weight: 500;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .result {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 1.5rem;
+            color: #007bff;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="form-container">
+        <h1>🔥 FMI Prediction</h1>
+        <form action="{{ url_for('predict_datapoint') }}" method="post">
+            <div class="form-group">
+                <label>Temperature</label>
+                <input type="text" name="Temperature" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label>Relative Humidity (RH)</label>
+                <input type="text" name="RH" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label>Wind Speed (WS)</label>
+                <input type="text" name="WS" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label>Rain</label>
+                <input type="text" name="Rain" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label>FFMC</label>
+                <input type="text" name="FFMC" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label>DMC</label>
+                <input type="text" name="DMC" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label>ISI</label>
+                <input type="text" name="ISI" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label>Classes</label>
+                <input type="text" name="Classes" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label>Region</label>
+                <input type="text" name="Region" class="form-control" required>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Predict</button>
+        </form>
+
+        {% if results %}
+            <div class="result">
+                <strong>The FWI prediction is:</strong> {{ results }}
+            </div>
+        {% endif %}
+    </div>
+
+</body>
+</html>
